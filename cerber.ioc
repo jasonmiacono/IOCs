@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="us-ascii"?>
-<ioc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="92d462de-aaeb-4e74-bc82-f012f228bed1" last-modified="2016-09-27T16:47:06" xmlns="http://schemas.mandiant.com/2010/ioc">
+<ioc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="92d462de-aaeb-4e74-bc82-f012f228bed1" last-modified="2016-09-27T19:39:56" xmlns="http://schemas.mandiant.com/2010/ioc">
   <short_description>Cerber IOC</short_description>
   <description>Cerber Ransomware Detection Looks for 3 Indicators of Compromise and will fire if any of the 3 are found.
 
@@ -80,6 +80,36 @@
         <IndicatorItem id="4a4d1f7d-d382-4827-80c3-233801c2b599" condition="contains">
           <Context document="FileItem" search="FileItem/FileExtension" type="mir" />
           <Content type="string">cerber</Content>
+        </IndicatorItem>
+      </Indicator>
+      <Indicator operator="OR" id="735fc783-055d-47de-baa8-fe7940e8fe08">
+        <IndicatorItem id="4d54dd1c-d062-4e51-a53b-bc259ed41893" condition="contains">
+          <Context document="Network" search="Network/DNS" type="mir" />
+          <Content type="string">52uo5k3t73ypjije.u50s89.bid</Content>
+        </IndicatorItem>
+        <IndicatorItem id="7870b224-9803-4045-9b5d-fd3609ced9bc" condition="contains">
+          <Context document="Network" search="Network/DNS" type="mir" />
+          <Content type="string">Solidaritedeproximite.org</Content>
+        </IndicatorItem>
+        <IndicatorItem id="d04907dc-3989-42d2-9f80-ec6436612e00" condition="contains">
+          <Context document="Network" search="Network/DNS" type="mir" />
+          <Content type="string">barbar-sizon.bid</Content>
+        </IndicatorItem>
+        <IndicatorItem id="c066f54c-16a1-4fa9-bb2a-7135474271da" condition="contains">
+          <Context document="Network" search="Network/DNS" type="mir" />
+          <Content type="string">barbar-sizon.biz</Content>
+        </IndicatorItem>
+        <IndicatorItem id="9bb5d6d3-0132-4996-beac-a1f2483537b7" condition="contains">
+          <Context document="Network" search="Network/DNS" type="mir" />
+          <Content type="string">philli43.xyz</Content>
+        </IndicatorItem>
+        <IndicatorItem id="e231312a-261b-4955-8610-22937631f05d" condition="contains">
+          <Context document="Network" search="Network/DNS" type="mir" />
+          <Content type="string">nigmo324.site</Content>
+        </IndicatorItem>
+        <IndicatorItem id="6e98e9c8-bf3a-45b7-8c4a-92bd4191c1aa" condition="contains">
+          <Context document="Network" search="Network/DNS" type="mir" />
+          <Content type="string">genuwinegrottos.com</Content>
         </IndicatorItem>
       </Indicator>
     </Indicator>
