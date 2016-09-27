@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<ioc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="92d462de-aaeb-4e74-bc82-f012f228bed1" last-modified="2016-09-27T16:47:06" xmlns="http://schemas.mandiant.com/2010/ioc">
+  <short_description>Cerber IOC</short_description>
+  <description>Cerber Ransomware Detection Looks for 3 Indicators of Compromise and will fire if any of the 3 are found.
+
+-Malicious File Names on the User Desktop
+-Malicious SHA1 file hashes present anywhere on the system
+-Malicious file extensions present</description>
+  <authored_by>Jason Iacono</authored_by>
+  <authored_date>2016-09-27T16:34:16</authored_date>
+  <links>
+    <link rel="category">Ransomware</link>
+    <link rel="comment">Public Release</link>
+  </links>
+  <definition>
+    <Indicator operator="OR" id="af18206c-cdae-43ae-83bd-54b0f46f2fd9">
+      <IndicatorItem id="0a4e3fe6-43fa-4a12-b715-f41f2188ce19" condition="is">
+        <Context document="FileItem" search="FileItem/Sha1sum" type="mir" />
+        <Content type="string">444FC88BB139F0729FD54542666AC95D33FAB7DE</Content>
+      </IndicatorItem>
+      <IndicatorItem id="a204d5ae-4758-47c8-83fa-42d66afb7e9d" condition="is">
+        <Context document="FileItem" search="FileItem/Sha1sum" type="mir" />
+        <Content type="string">03D84211C2FA968B7737B37A5968B716259848A2</Content>
+      </IndicatorItem>
+      <IndicatorItem id="51c08957-7970-4583-897f-1a492caaa237" condition="is">
+        <Context document="FileItem" search="FileItem/Sha1sum" type="mir" />
+        <Content type="string">D797EE6794769FD8520586DA844728CF2600D764</Content>
+      </IndicatorItem>
+      <IndicatorItem id="f13925b3-5498-4667-8100-35d0603c91ef" condition="is">
+        <Context document="FileItem" search="FileItem/Sha1sum" type="mir" />
+        <Content type="string">7BE42FFAAC461BB87B39098706A0A4022CC78517</Content>
+      </IndicatorItem>
+      <IndicatorItem id="b97b34da-3146-4f9a-89cc-731d60abf2c9" condition="is">
+        <Context document="FileItem" search="FileItem/Sha1sum" type="mir" />
+        <Content type="string">C08C59EF13874CDB23EC7EB4DE4CD76AF131DC7A</Content>
+      </IndicatorItem>
+      <IndicatorItem id="9f16e3ea-2f75-4f95-8f96-8c3990dcb942" condition="is">
+        <Context document="FileItem" search="FileItem/Sha1sum" type="mir" />
+        <Content type="string">8A34DA2DB8A079C4CD5050EBD29A73A351EDE832</Content>
+      </IndicatorItem>
+      <IndicatorItem id="0acb9b72-abf4-4e04-97d7-562fc65b1b89" condition="is">
+        <Context document="FileItem" search="FileItem/Sha1sum" type="mir" />
+        <Content type="string">36AFE469B1CA6BC122414D94B814222B7887D80F</Content>
+      </IndicatorItem>
+      <IndicatorItem id="f0dee82c-89bc-4bfe-9bf2-1c647b36aa08" condition="is">
+        <Context document="FileItem" search="FileItem/Sha1sum" type="mir" />
+        <Content type="string">E69FD09F846C999C95CDF43A6CF114D73FE618F8</Content>
+      </IndicatorItem>
+      <IndicatorItem id="eb32a6f7-4871-42a1-b3b3-a29ee825bc9d" condition="is">
+        <Context document="FileItem" search="FileItem/Sha1sum" type="mir" />
+        <Content type="string">82a67b2c81122c8dc430dd461e87d92d98ac26b7</Content>
+      </IndicatorItem>
+      <IndicatorItem id="2ddb134d-144d-49ba-b5cc-b04ac24fb335" condition="is">
+        <Context document="FileItem" search="FileItem/Sha1sum" type="mir" />
+        <Content type="string">b10642a3d4239486f544ce35b8cb6729ad398820</Content>
+      </IndicatorItem>
+      <IndicatorItem id="8f383e57-353a-45ed-97d2-3138e60ea112" condition="is">
+        <Context document="FileItem" search="FileItem/Sha1sum" type="mir" />
+        <Content type="string">0e4470801aa9e53f96ecb34696cb89643cbf0b4c</Content>
+      </IndicatorItem>
+      <Indicator operator="OR" id="748df3c0-e9ce-44ce-b49a-8272a8a3d701">
+        <IndicatorItem id="4c4d1c04-3586-479d-8ac7-69d1786d3476" condition="contains">
+          <Context document="FileItem" search="FileItem/FileName" type="mir" />
+          <Content type="string"># DECRYPT MY FILES #.vbs</Content>
+        </IndicatorItem>
+        <IndicatorItem id="4300c90a-18a0-4603-9400-a4ef2ffda3d0" condition="contains">
+          <Context document="FileItem" search="FileItem/FileName" type="mir" />
+          <Content type="string"># DECRYPT MY FILES #.txt</Content>
+        </IndicatorItem>
+        <IndicatorItem id="32960544-1aa1-4a1e-9510-41dd15522114" condition="contains">
+          <Context document="FileItem" search="FileItem/FileName" type="mir" />
+          <Content type="string"># DECRYPT MY FILES #.html</Content>
+        </IndicatorItem>
+        <IndicatorItem id="f389e907-c60d-4071-97f7-8961d7fa5628" condition="contains">
+          <Context document="FileItem" search="FileItem/FileName" type="mir" />
+          <Content type="string"># HELP DECRYPT #.txt</Content>
+        </IndicatorItem>
+      </Indicator>
+      <Indicator operator="OR" id="f39ec278-6b0e-46da-a553-ed145da01d5f">
+        <IndicatorItem id="4a4d1f7d-d382-4827-80c3-233801c2b599" condition="contains">
+          <Context document="FileItem" search="FileItem/FileExtension" type="mir" />
+          <Content type="string">cerber</Content>
+        </IndicatorItem>
+      </Indicator>
+    </Indicator>
+  </definition>
+</ioc>
